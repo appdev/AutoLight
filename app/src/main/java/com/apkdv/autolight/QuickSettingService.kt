@@ -3,6 +3,8 @@ package com.apkdv.autolight
 import android.provider.Settings
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
+import android.util.Log
+import androidx.appcompat.widget.DialogTitle
 
 
 /**
@@ -42,17 +44,20 @@ class QuickSettingService: TileService() {
 
         //do open somethings.
     }
-
+    private val TAG = "QuickSettingService"
     // 打开下拉菜单的时候调用,当快速设置按钮并没有在编辑栏拖到设置栏中不会调用
     //在TleAdded之后会调用一次
     override fun onStartListening() {
+
         val tile = qsTile ?: return
         if (Utils.isAutoBrightness(contentResolver)){
+            Log.d(TAG, "onStartListening() STATE_ACTIVE")
             tile.state = Tile.STATE_ACTIVE
             //更新快速设置面板上的图块的颜色，状态为开.
             tile.updateTile()
         }else{
             tile.state = Tile.STATE_INACTIVE
+            Log.d(TAG, "onStartListening() STATE_INACTIVE")
             //更新快速设置面板上的图块的颜色，状态为关.
             tile.updateTile()
         }

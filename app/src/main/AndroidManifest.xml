@@ -11,7 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -19,8 +21,9 @@
         </activity>
         <service
             android:name=".QuickSettingService"
-            android:icon="@drawable/ic_brightness_auto_black_24dp"
+            android:exported="true"
 
+            android:icon="@drawable/ic_brightness_auto_black_24dp"
             android:label="自动亮度"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
